@@ -1,7 +1,7 @@
 # Assignment (Nginx, Docker, Nodejs)
 ● Create a Dockerfile for Nodejs application.
 
-`
+~~~
 FROM node:12.18.1
 ENV NODE_ENV=production
 
@@ -14,7 +14,7 @@ RUN npm install --production
 COPY . .
 
 CMD [ "node", "server.js" ]
-`
+~~~
 
 ● Make the necessary changes in the code configuration.
 (config/default.json)
@@ -24,7 +24,7 @@ CMD [ "node", "server.js" ]
 service(Nodejs, Mongodb, Mysql) in the environment should run in a
 separate container.
 1. mango db databse Docker-compose file
- `
+ ~~~
  #nodjs
 
 version: '3'
@@ -55,9 +55,9 @@ services:
 volumes:
 	- .
 	- node_modules
- `
+ ~~~
 2.  MYSQL DATABSE Docker-compose file
- `
+ ~~~
  # MYSQL db creating
 version: '3'  
 services:
@@ -75,24 +75,25 @@ services:
 volumes:
     mysql_storage		
     
- `
+ ~~~
 ● Make sure all data will be persistent even if any of the containers crashes,
 restarts.
-`
+~~~
 volumes:
    - mysql_storage`
-   
+ ~~~  
 ● Make sure services will start in the right order (i.e. wait for mysql
 initialization)
-`
+~~~
 dependes on:
-  - node.js`
+  - node.js
+ ~~~
 ● Add a custom configuration to Nginx
 ○ Enable HTTPS and redirect HTTP to HTTPS
 ○ Create a self-signed certificate or use LetsEncrypt, also document
 the commands you are using to create the certificate
-
-`certbot:
+~~~
+certbot:
     image: certbot/certbot
     container_name: certbot
     volumes:
@@ -101,7 +102,7 @@ the commands you are using to create the certificate
       - web-root:/var/www/html
     depends_on:
       - webserver
-   `
+  ~~~
 
 # Conclusion:
 
