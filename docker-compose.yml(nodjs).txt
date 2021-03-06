@@ -1,0 +1,49 @@
+#nodjs
+
+version: '3'
+
+services:
+  nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nodejs
+    container_name: nodejs
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - MONGO_USERNAME= vishal
+      - MONGO_PASSWORD= 123
+      - MONGO_HOSTNAME= db
+      - MONGO_PORT= '27017-27019'
+      - MONGO_DB= mydb1
+    ports:
+      - "80:443"
+    volumes:
+      - .:/home/node/app
+      - node_modules:/home/node/app/node_modules
+    networks:
+      - app-network
+    command: ./wait-for.sh db:27017 -- /home/node/app/node_modules/.bin/nodemon app.js
+volumes:
+	- .
+	- node_modules
+	- web-root
+	- ./nginx-conf
+	
+
+    webserver:
+    	image: nginx:mainline-alpine
+    	container_name: webserver
+    	restart: unless-stopped
+    	ports:
+      	   - "80:80"
+    volumes:
+      - web-root:/var/www/html
+      - ./nginx-conf:/etc/nginx/conf.d
+    
+    depends_on:
+      - nodejs
+    networks:
+        app-network:
+	   driver: bridge
