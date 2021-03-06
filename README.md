@@ -1,6 +1,6 @@
 # Assignment (Nginx, Docker, Nodejs)
 ## Verify candidate's ability to work with Jenkins
-for more details : 
+for more details : https://github.com/cybshark/jenkins.git
 
 ● Create a Dockerfile for Nodejs application.
 
@@ -108,8 +108,11 @@ certbot:
   ~~~
 
 # Conclusion:
-     As mentioned inside the assignment we have created Dockerfile for NodeJS Application and have created three different enviornments for NodeJS, MongoDB & MySQL, also launched three different containers for each of them. We have created persistant storage so that it will be availble even if we restart the containers.
+     As mentioned inside the assignment we have created Dockerfile for NodeJS Application and have created three different enviornments for NodeJS, MongoDB & MySQL, 
+     also launched three different containers for each of them. We have created persistant storage so that it will be availble even if we restart the containers.
      
 # Errors:
-     As I have not worked on NodeJs applications earlier it is difficult for me to understand the code and what types of files are available there. I have tried my best to do this but unfortunately I am getting errors. These errors might be due to I didn't understand the code as there are multiple files in the document that you have shared through the link.
+     As I have not worked on NodeJs applications earlier it is difficult for me to understand the code and what types of files are available there. 
+     I have tried my best to do this but unfortunately I am getting errors. 
+     These errors might be due to I didn't understand the code as there are multiple files in the document that you have shared through the link.
 
